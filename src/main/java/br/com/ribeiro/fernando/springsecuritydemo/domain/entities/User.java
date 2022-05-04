@@ -1,16 +1,19 @@
 package br.com.ribeiro.fernando.springsecuritydemo.domain.entities;
 
+import java.util.Set;
+
+import br.com.ribeiro.fernando.springsecuritydemo.domain.valueobjects.UserAuthorities;
+import br.com.ribeiro.fernando.springsecuritydemo.domain.valueobjects.UserRole;
+
 public class User {
 
 	private String username;
 	private String password;
-	private String role;
 	private String name;
 	private String mobileNumber;
 	private String email;
-	private String statusCd;
-	private String statusMsg;
-	private String authStatus;
+	private UserRole role;
+	private Set<UserAuthorities> authorities;
 	
 	public String getUsername() {
 		return username;
@@ -28,11 +31,11 @@ public class User {
 		this.password = password;
 	}
 	
-	public String getRole() {
+	public UserRole getRole() {
 		return role;
 	}
 	
-	public void setRole(String role) {
+	public void setRole(UserRole role) {
 		this.role = role;
 	}
 
@@ -60,28 +63,12 @@ public class User {
 		this.email = email;
 	}
 
-	public String getStatusCd() {
-		return statusCd;
+	public Set<UserAuthorities> getAuthorities() {
+		return authorities;
 	}
 
-	public void setStatusCd(String statusCd) {
-		this.statusCd = statusCd;
+	public void setAuthorities(Set<UserAuthorities> authorities) {
+		this.authorities = authorities;
 	}
 
-	public String getStatusMsg() {
-		return statusMsg;
-	}
-
-	public void setStatusMsg(String statusMsg) {
-		this.statusMsg = statusMsg;
-	}
-
-	public String getAuthStatus() {
-		return authStatus;
-	}
-
-	public void setAuthStatus(String authStatus) {
-		this.authStatus = authStatus;
-	}
-	
 }

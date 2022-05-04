@@ -1,4 +1,4 @@
-package br.com.ribeiro.fernando.springsecuritydemo.ports.security.usermanagers;
+package br.com.ribeiro.fernando.springsecuritydemo.ports.security.managers;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -30,7 +30,9 @@ public class UserSecurityManager implements UserDetails, UserDetailsManager {
 		
 		 Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
 		 
-		 grantedAuthorities.add(new SimpleGrantedAuthority(user.getRole()));
+		 user
+		 	.getAuthorities()
+		 	.forEach(authority -> grantedAuthorities.add(new SimpleGrantedAuthority(authority.name())));
 		
 		return grantedAuthorities;
 	}

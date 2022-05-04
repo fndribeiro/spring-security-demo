@@ -1,17 +1,15 @@
 package br.com.ribeiro.fernando.springsecuritydemo.application.dtos;
 
 import br.com.ribeiro.fernando.springsecuritydemo.domain.entities.User;
+import br.com.ribeiro.fernando.springsecuritydemo.domain.valueobjects.UserRole;
 
 public class UserDTO {
 
 	private String username;
-	private String role;
+	private UserRole role;
 	private String name;
 	private String mobileNumber;
 	private String email;
-	private String statusCd;
-	private String statusMsg;
-	private String authStatus;
 	
 	public UserDTO(User user) {
 		this.username = user.getUsername();
@@ -19,16 +17,13 @@ public class UserDTO {
 		this.name = user.getName();
 		this.mobileNumber = user.getMobileNumber();
 		this.email = user.getEmail();
-		this.statusCd = user.getStatusCd();
-		this.statusMsg = user.getStatusMsg();
-		this.authStatus = user.getAuthStatus();
 	}
 
 	public String getUsername() {
 		return username;
 	}
 
-	public String getRole() {
+	public UserRole getRole() {
 		return role;
 	}
 
@@ -44,16 +39,4 @@ public class UserDTO {
 		return email;
 	}
 
-	public String getStatusCd() {
-		return statusCd;
-	}
-
-	public String getStatusMsg() {
-		return statusMsg;
-	}
-
-	public String getAuthStatus() {
-		return authStatus;
-	}
-	
 }

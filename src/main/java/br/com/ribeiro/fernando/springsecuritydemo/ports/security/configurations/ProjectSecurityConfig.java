@@ -14,6 +14,8 @@ import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 
+import br.com.ribeiro.fernando.springsecuritydemo.domain.valueobjects.UserAuthorities;
+import br.com.ribeiro.fernando.springsecuritydemo.domain.valueobjects.UserRole;
 import br.com.ribeiro.fernando.springsecuritydemo.ports.controllers.ControllersURIs;
 
 @Configuration
@@ -37,16 +39,14 @@ public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
 			})
 			.and()
 				.csrf()
-				.ignoringAntMatchers(ControllersURIs.CONTACT)
+				.ignoringAntMatchers(ControllersURIs.PERMIT_ALL)
 				.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
 			.and().authorizeRequests()
-			.antMatchers(ControllersURIs.ACCOUNT).authenticated()
-			.antMatchers(ControllersURIs.BALANCE).authenticated()
-			.antMatchers(ControllersURIs.CARD).authenticated()
-			.antMatchers(ControllersURIs.LOAN).authenticated()
 			.antMatchers(ControllersURIs.USER).authenticated()
-			.antMatchers(ControllersURIs.NOTICE).permitAll()
-			.antMatchers(ControllersURIs.CONTACT).permitAll()
+			.antMatchers(ControllersURIs.AUTHENTICATED).authenticated()
+			.antMatchers(ControllersURIs.HAS_AUTHORITY).hasAuthority(UserAuthorities.WRITE.name())
+			.antMatchers(ControllersURIs.HAS_ROLE).hasRole(UserRole.ADMIN.name())
+			.antMatchers(ControllersURIs.PERMIT_ALL).permitAll()
 			.and().formLogin()
 			.and().httpBasic();
 	}

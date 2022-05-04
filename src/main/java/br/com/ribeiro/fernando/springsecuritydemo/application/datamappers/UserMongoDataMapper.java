@@ -14,10 +14,4 @@ public class UserMongoDataMapper extends User {
 	
 	public UserMongoDataMapper() {}
 
-	public UserMongoDataMapper(User user) {
-		setUsername(user.getUsername());
-		setPassword(user.getPassword());
-		setRole(user.getRole());
-	}
-
 }

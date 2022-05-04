@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.ribeiro.fernando.springsecuritydemo.application.datamappers.UserMongoDataMapper;
 import br.com.ribeiro.fernando.springsecuritydemo.ports.repositories.UserMongoRepository;
-import br.com.ribeiro.fernando.springsecuritydemo.ports.security.usermanagers.UserSecurityManager;
+import br.com.ribeiro.fernando.springsecuritydemo.ports.security.managers.UserSecurityManager;
 
 @Service
 public class MongoUserDetailsServiceImpl implements UserDetailsService {

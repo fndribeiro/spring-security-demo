@@ -5,11 +5,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(ControllersURIs.NOTICE)
-public class NoticeController {
+@RequestMapping(ControllersURIs.PERMIT_ALL)
+public class PermitAllController {
 	
 	@GetMapping
-	public String getNotices(String input) {
+	public String acceptWithoutAuthentication() {
 		return "OK";
 	}
 	

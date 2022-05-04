@@ -5,11 +5,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(ControllersURIs.ACCOUNT)
-public class AccountController {
+@RequestMapping(ControllersURIs.HAS_AUTHORITY)
+public class HasAuthorityController {
 	
 	@GetMapping
-	public String getAccountDetails(String input) {
+	public String acceptOnlyWithAuthority() {
 		return "OK";
 	}
 	

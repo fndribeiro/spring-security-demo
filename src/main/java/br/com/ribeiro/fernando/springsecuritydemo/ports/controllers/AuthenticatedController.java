@@ -5,11 +5,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(ControllersURIs.CONTACT)
-public class ContactController {
+@RequestMapping(ControllersURIs.AUTHENTICATED)
+public class AuthenticatedController {
 	
 	@GetMapping
-	public String saveContactInquiryDetails(String input) {
+	public String acceptOnlyWithAuthentication() {
 		return "OK";
 	}
 	

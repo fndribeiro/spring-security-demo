@@ -5,11 +5,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(ControllersURIs.LOAN)
-public class LoanController {
+@RequestMapping(ControllersURIs.HAS_ROLE)
+public class HasRoleController {
 	
 	@GetMapping
-	public String getLoanDetails(String input) {
+	public String acceptOnlyWithRole() {
 		return "OK";
 	}
 	
