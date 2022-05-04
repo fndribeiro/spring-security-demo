@@ -1,4 +1,4 @@
-package br.com.ribeiro.fernando.springsecuritydemo.application.services.auth.impl;
+package br.com.ribeiro.fernando.springsecuritydemo.ports.security.services;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
