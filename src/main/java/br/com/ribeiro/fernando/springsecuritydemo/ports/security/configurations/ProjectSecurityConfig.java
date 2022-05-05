@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
@@ -17,6 +18,7 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import br.com.ribeiro.fernando.springsecuritydemo.domain.valueobjects.UserAuthorities;
 import br.com.ribeiro.fernando.springsecuritydemo.domain.valueobjects.UserRole;
 import br.com.ribeiro.fernando.springsecuritydemo.ports.controllers.ControllersURIs;
+import br.com.ribeiro.fernando.springsecuritydemo.ports.security.filters.CustomValidationFilter;
 
 @Configuration
 public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -41,14 +43,18 @@ public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
 				.csrf()
 				.ignoringAntMatchers(ControllersURIs.PERMIT_ALL)
 				.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-			.and().authorizeRequests()
+			.and()
+				.addFilterBefore(new CustomValidationFilter(), BasicAuthenticationFilter.class)
+			.authorizeRequests()
 			.antMatchers(ControllersURIs.USER).authenticated()
 			.antMatchers(ControllersURIs.AUTHENTICATED).authenticated()
 			.antMatchers(ControllersURIs.HAS_AUTHORITY).hasAuthority(UserAuthorities.WRITE.name())
 			.antMatchers(ControllersURIs.HAS_ROLE).hasRole(UserRole.ADMIN.name())
 			.antMatchers(ControllersURIs.PERMIT_ALL).permitAll()
-			.and().formLogin()
-			.and().httpBasic();
+			.and()
+				.formLogin()
+			.and()
+				.httpBasic();
 	}
 	
 	@Bean
