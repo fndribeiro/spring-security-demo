@@ -7,6 +7,6 @@ public class SecurityConstants {
 	public static final String SUBJECT = "JWT Token";
 	public static final String USERNAME = "username";
 	public static final String AUTHORITIES = "authorities";
-	public static final long TOKEN_EXPIRATION = 30000;
+	public static final long TOKEN_EXPIRATION = 3000000;
 	
 }

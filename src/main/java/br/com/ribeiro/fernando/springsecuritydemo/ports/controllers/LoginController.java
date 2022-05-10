@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(ControllersURIs.ACCESS)
+@RequestMapping(ControllersURIs.USERS + ControllersURIs.LOGIN)
 public class LoginController {
 	
 	@GetMapping

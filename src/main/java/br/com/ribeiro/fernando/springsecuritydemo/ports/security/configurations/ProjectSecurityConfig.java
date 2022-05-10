@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpHeaders;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -25,6 +26,7 @@ import br.com.ribeiro.fernando.springsecuritydemo.ports.security.filters.JWTToke
 import br.com.ribeiro.fernando.springsecuritydemo.ports.security.filters.UsernameValidationFilter;
 
 @Configuration
+@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true, jsr250Enabled = true)
 public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
@@ -54,7 +56,7 @@ public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
 			.addFilterBefore(new JWTTokenValidationFilter(), BasicAuthenticationFilter.class)
 			.addFilterAfter(new JWTTokenGeneratorFilter(), BasicAuthenticationFilter.class)
 			.authorizeRequests()
-			.antMatchers(ControllersURIs.ACCESS).authenticated()
+			.antMatchers(ControllersURIs.USERS + ControllersURIs.LOGIN).authenticated()
 			.antMatchers(ControllersURIs.AUTHENTICATED).authenticated()
 			.antMatchers(ControllersURIs.HAS_AUTHORITY).hasAuthority(UserAuthorities.WRITE.name())
 			.antMatchers(ControllersURIs.HAS_ROLE).hasRole(UserRole.ADMIN.name())
