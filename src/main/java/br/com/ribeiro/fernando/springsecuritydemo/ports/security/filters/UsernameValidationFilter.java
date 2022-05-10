@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.BadCredentialsException;
 
-public class CustomValidationFilter implements Filter {
+public class UsernameValidationFilter implements Filter {
 
 	private final String authenticationSchemeBasic = "basic";
 	private final String invalidUsernameWord = "test";
