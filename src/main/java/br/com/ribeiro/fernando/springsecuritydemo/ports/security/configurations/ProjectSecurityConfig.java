@@ -1,3 +1,4 @@
+/*
 package br.com.ribeiro.fernando.springsecuritydemo.ports.security.configurations;
 
 import java.util.Arrays;
@@ -73,3 +74,4 @@ public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 	
 }
+*/
